@@ -61,10 +61,8 @@ CrossValidation<Integrator, Integrator_noPoly, ORDER, mydim, ndim>::performCV(){
     K_folds_[length + i/K] = i;
   }
 
-  #ifdef _OPENMP
   omp_set_num_threads(this->dataProblem_.getNThreads_fold()); // set the number of threads
   #pragma omp parallel for
-  #endif
   // cycle on the folds
   for (UInt i = 0; i < K; i++){
 
@@ -141,10 +139,8 @@ template<typename Integrator, typename Integrator_noPoly, UInt ORDER, UInt mydim
 void
 RightCrossValidation<Integrator, Integrator_noPoly, ORDER, mydim, ndim>::performCV_core(UInt fold, const SpMat& Psi_train, const SpMat& Psi_valid){
 
-  #ifdef _OPENMP
   omp_set_num_threads(this->dataProblem_.getNThreads_l()); // set the number of threads
   #pragma omp parallel for
-  #endif
   for (UInt l=0; l < this->dataProblem_.getNlambda(); l++){
 
      std::unique_ptr<MinimizationAlgorithm<Integrator, Integrator_noPoly, ORDER, mydim, ndim>>

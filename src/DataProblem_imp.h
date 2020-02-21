@@ -91,10 +91,8 @@ Real DataProblem<Integrator, Integrator_noPoly, ORDER, mydim, ndim>::FEintegrate
 
   constexpr UInt Nodes = mydim==2? 3*ORDER : 6*ORDER-2;
 
-  #ifdef _OPENMP
   omp_set_num_threads(deData_.getNThreads_int()); // set the number of threads
   #pragma omp parallel for reduction(+: total_sum)
-  #endif
   for(UInt triangle=0; triangle<mesh_.num_elements(); triangle++){
 
     FiniteElement<Integrator_noPoly, ORDER, mydim, ndim> fe;

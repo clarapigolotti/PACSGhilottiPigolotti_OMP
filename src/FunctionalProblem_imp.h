@@ -14,10 +14,8 @@ FunctionalProblem<Integrator, Integrator_noPoly, ORDER, mydim, ndim>::computeInt
 
 	constexpr UInt Nodes = mydim==2? 3*ORDER : 6*ORDER-2;
 
-	#ifdef _OPENMP
 	omp_set_num_threads(dataProblem_.getNThreads_int()); // set the number of threads
   #pragma omp parallel for reduction(+: int1) reduction(sumVectorXd: int2)
-	#endif
 	for(UInt triangle=0; triangle<dataProblem_.getNumElements(); triangle++){
 
 		FiniteElement<Integrator_noPoly, ORDER, mydim, ndim> fe;

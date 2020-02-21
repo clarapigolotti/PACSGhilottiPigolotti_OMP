@@ -32,9 +32,7 @@
 //Take the code from the linked Rmumps  (future release?)
 //#include <dmumps_c.h>
 
-#ifdef _OPENMP
 #include <omp.h>
-#endif
 
 #define  EIGEN_MPL2_ONLY
 
