@@ -6,7 +6,7 @@
 #define R_NO_REMAP
 #include <R.h>
 #include <Rdefines.h>
-#include <Rinternals.h> 
+#include <Rinternals.h>
 #endif
 
 #include <stdint.h>
@@ -31,6 +31,10 @@
 
 //Take the code from the linked Rmumps  (future release?)
 //#include <dmumps_c.h>
+
+#ifdef _OPENMP
+#include <omp.h>
+#endif
 
 #define  EIGEN_MPL2_ONLY
 
