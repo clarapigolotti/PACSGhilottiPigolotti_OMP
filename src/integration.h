@@ -90,6 +90,7 @@ class IntegratorGaussTriangle4
 		static const VectorXr WEIGHTS;
 };
 
+// For the computation of integrals in Density_Estimation, when mydim = 3
 class IntegratorGaussTetra2
 {
 	private:
